@@ -1,0 +1,32 @@
+# Local credentials and environment files
+.env
+.env.*
+!.env.example
+/wp-config.php
+
+# Dependencies and generated files
+node_modules/
+dist/
+dist-ssr/
+*.log
+*.sql
+*.sql.gz
+*.zip
+
+# WordPress core and installed third-party assets
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/index.php
+/xmlrpc.php
+/license.txt
+/readme.html
+/package-lock.json
+/wp-content/*
+!/wp-content/mu-plugins/
+
+# Local editor and OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
