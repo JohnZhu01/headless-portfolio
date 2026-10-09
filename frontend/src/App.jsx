@@ -1,10 +1,10 @@
 import { Link, Navigate, NavLink, Route, Routes } from 'react-router'
 import Home from './pages/Home'
-import Projects from './pages/Projects'
-import TechStack from './pages/TechStack'
-import SkillsEducation from './pages/SkillsEducation'
 import Experience from './pages/Experience'
-import './App.css'
+import SkillsEducation from './pages/SkillsEducation'
+import TechStack from './pages/TechStack'
+import Projects from './pages/Projects'
+import './styles/App.css'
 import { useState } from "react";
 
 export default function App() {
@@ -14,7 +14,7 @@ export default function App() {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <header className="site-header page-width">
+      <header className="site-header">
         <Link className="wordmark" to="/" aria-label="John Zhu home">
           John Zhu<span aria-hidden="true">.</span>
         </Link>
@@ -64,11 +64,11 @@ export default function App() {
       <main id="main" className="page-width">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<Navigate to="/" replace />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/tech-stack" element={<TechStack />} />
-          <Route path="/skills-and-education" element={<SkillsEducation />} />
           <Route path="/experience" element={<Experience />} />
+          <Route path="/skills-and-education" element={<SkillsEducation />} />
+          <Route path="/tech-stack" element={<TechStack />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/about" element={<Navigate to="/" replace />} />
           <Route
             path="*"
             element={
