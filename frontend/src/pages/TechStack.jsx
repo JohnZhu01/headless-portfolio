@@ -37,9 +37,16 @@ export default function TechStack() {
     return () => controller.abort()
   }, [])
 
-  const populatedCategories = techCategories.filter(
-    (category) => Array.isArray(category.acf?.tools) && category.acf.tools.length,
-  )
+  const populatedCategories = techCategories
+    .filter(
+      (category) => Array.isArray(category.acf?.tools) && category.acf.tools.length,
+    )
+    .sort(
+      (a, b) =>
+        Number(a.acf.display_order ?? 50) -
+          Number(b.acf.display_order ?? 50) ||
+        a.name.localeCompare(b.name),
+    )
 
   return (
         <section className="tech-stack-section" aria-labelledby="tech-stack-title">

@@ -1,4 +1,3 @@
-import { Link } from 'react-router'
 import useWordPress from '../hooks/useWordPress'
 import plainText from '../utils/plainText'
 
@@ -14,10 +13,6 @@ export default function Home() {
       {!loading && !error && !home && (
         <p className="home-content">Front-end web developer building responsive, user-friendly websites.</p>
       )}
-      <div className="home-links">
-        <Link className="button" to="/projects">View projects</Link>
-        <Link to="/tech-stack">Tech Stack</Link>
-      </div>
     </article>
   )
 }

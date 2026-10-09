@@ -16,10 +16,10 @@ export default function App() {
         </Link>
         <nav aria-label="Main navigation">
           <NavLink to="/" end>Home</NavLink>
-          <NavLink to="/projects">Projects</NavLink>
-          <NavLink to="/tech-stack">Tech Stack</NavLink>
-          <NavLink to="/skills-and-education">Skills &amp; Education</NavLink>
           <NavLink to="/experience">Experience</NavLink>
+          <NavLink to="/skills-and-education">Skills &amp; Education</NavLink>
+          <NavLink to="/tech-stack">Tech Stack</NavLink>
+          <NavLink to="/projects">Projects</NavLink>
         </nav>
       </header>
       <main id="main" className="page-width">
