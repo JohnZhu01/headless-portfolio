@@ -1,4 +1,4 @@
-import { Link, Navigate, NavLink, Route, Routes } from 'react-router'
+import { Link, Navigate, NavLink, Route, Routes, useLocation } from 'react-router'
 import Home from './pages/Home'
 import Experience from './pages/Experience'
 import SkillsEducation from './pages/SkillsEducation'
@@ -9,6 +9,7 @@ import { useState } from "react";
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation()
   return (
     <>
       <a className="skip-link" href="#main">
@@ -62,23 +63,25 @@ export default function App() {
         <span aria-hidden="true">{menuOpen ? "×" : "☰"}</span>
       </button>
       <main id="main" className="page-width">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/experience" element={<Experience />} />
-          <Route path="/skills-and-education" element={<SkillsEducation />} />
-          <Route path="/tech-stack" element={<TechStack />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/about" element={<Navigate to="/" replace />} />
-          <Route
-            path="*"
-            element={
-              <section className="hero">
-                <h1>Page not found</h1>
-                <Link to="/">Return home</Link>
-              </section>
-            }
-          />
-        </Routes>
+        <div className="page-transition" key={location.pathname}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/experience" element={<Experience />} />
+            <Route path="/skills-and-education" element={<SkillsEducation />} />
+            <Route path="/tech-stack" element={<TechStack />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/about" element={<Navigate to="/" replace />} />
+            <Route
+              path="*"
+              element={
+                <section className="hero">
+                  <h1>Page not found</h1>
+                  <Link to="/">Return home</Link>
+                </section>
+              }
+            />
+          </Routes>
+        </div>
       </main>
       <footer className="site-footer page-width">
         <p>&copy; {new Date().getFullYear()} John Zhu</p>

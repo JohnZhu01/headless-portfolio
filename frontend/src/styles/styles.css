@@ -1,23 +1,332 @@
-﻿:root {
-  font-family: Arial, Helvetica, sans-serif;
-  color: #242820;
-  background: #f7f7f0;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  --muted: #62665d;
-  --line: #d9dccf;
-  --accent: #506b2f;
+:root {
+  --font-body: Arial, Helvetica, sans-serif;
+  --font-heading: var(--font-body);
+  --font-mono: Consolas, monospace;
+  font-family: var(--font-body);
+  color: #181818;
+  background: #ffffff;
+  --muted: #595650;
+  --line: #D8D1C4;
+  --accent: #C65D32;
+  --blue: #2F7CAD;
 }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 30px; }
-body { margin: 0; min-width: 320px; }
-a { color: inherit; text-underline-offset: 5px; }
-button, input { font: inherit; }
-a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 6px; }
-h1, h2, h3, p { margin: 0; }
-img { display: block; max-width: 100%; }
-::selection { background: #d7e9b4; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
+body {
+  font-size: 16px;
+  line-height: 1.6;
+}
 
+h1, h2, h3, h4, .wordmark {
+  font-family: var(--font-heading);
+  text-wrap: balance;
+}
+
+h2 {
+  background: transparent;
+  color: #181818;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 5px;
+}
+
+button, input {
+  font: inherit;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 6px;
+}
+
+::selection {
+  background: #181818;
+  color: #F5F1E8;
+}
+
+.skip-link {
+  background: white;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+.button {
+  background: #252c20;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.button:hover {
+  background: var(--accent);
+}
+
+.button span {
+  font-size: 22px;
+}
+
+.section-heading h1, .section-heading h2, .about-section h2 {
+  font-size: clamp(32px, 4vw, 46px);
+  font-weight: 500;
+  letter-spacing: -.045em;
+}
+
+.section-heading h2, .about-section h2 {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.section-heading .eyebrow {
+  color: var(--muted);
+}
+
+.status {
+  color: var(--muted);
+}
+
+.page-copy {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* Navigation */
+.site-header {
+  background: #181818;
+  color: #fff;
+}
+
+.wordmark {
+  font-size: 25px;
+  font-weight: 750;
+  letter-spacing: -1px;
+  text-decoration: none;
+}
+
+.wordmark span, .accent {
+  color: var(--accent);
+}
+
+.site-header .wordmark span {
+  color: #fff;
+}
+
+.site-header nav {
+  font-size: 14px;
+}
+
+.site-header nav a {
+  text-decoration: none;
+}
+
+.site-header nav a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--blue);
+}
+
+.site-header nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 6px;
+}
+
+.menu-backdrop {
+  border: 0;
+  background: rgb(0 0 0 / 40%);
+}
+
+.site-header .main-navigation {
+  background: #F5F1E8;
+  border: 1px solid var(--line);
+  color: #181818;
+}
+
+.menu-toggle {
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #181818;
+  color: #F5F1E8;
+  font-size: 26px;
+}
+
+.hero .eyebrow {
+  color: var(--muted);
+}
+
+.hero h1 {
+  font-size: clamp(52px, 8.5vw, 108px);
+  line-height: 1.02;
+  letter-spacing: -.065em;
+  font-weight: 500;
+}
+
+.hero h1 span {
+  color: var(--accent);
+}
+
+.hero-bottom p {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.about-section {
+  border-top: 1px solid var(--line);
+}
+
+.about-section .eyebrow {
+  color: var(--muted);
+}
+
+.about-section p:not(.eyebrow) {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.home-content {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.content-entry {
+  border-top: 1px solid var(--line);
+}
+
+.content-entry h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* Tech Stack */
+.tech-stack-section {
+  border-top: 1px solid var(--line);
+}
+
+.tech-category > h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.tech-tool {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--blue);
+  border-radius: 6px;
+  box-shadow: 0 3px 8px rgb(0 0 0 / 9%);
+}
+
+.tech-tool h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.tech-tool p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Projects */
+.work-section {
+  border-top: 1px solid var(--line);
+}
+
+.project-visual {
+  background: #E8E2D7;
+}
+
+.project-placeholder {
+  background: #E8E2D7;
+  color: #181818;
+}
+
+.placeholder-label {
+  font: 11px var(--font-mono);
+  letter-spacing: 2px;
+}
+
+.placeholder-title {
+  font-size: clamp(30px, 4vw, 50px);
+  letter-spacing: -.05em;
+}
+
+.placeholder-title span {
+  font-size: 60px;
+  font-weight: 300;
+}
+
+.project-heading h3 {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: -.6px;
+}
+
+.project-number {
+  font: 12px var(--font-mono);
+  color: var(--muted);
+}
+
+.project-description, .project-details p {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.project-details summary {
+  font-size: 14px;
+}
+
+.project-heading h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -.6px;
+}
+.project-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgb(0 0 0 / 9%);
+}
+
+/* Footer */
+.site-footer a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.site-footer a {
+  text-decoration: none;
+}
+
+/* Responsive styles */
+@media (max-width: 640px) {
+  .section-heading .eyebrow {
+    font-size: 10px;
+    letter-spacing: .5px;
+  }
+}
+
+@media (min-width: 641px) {
+  .site-header .main-navigation {
+    border: 0;
+    background: transparent;
+    color: #fff;
+  }
+}
