@@ -286,7 +286,17 @@ summary:focus-visible {
 .project-details summary {
   font-size: 14px;
 }
+.project-details-link {
+  background: #181818;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+}
 
+.project-details-link:hover {
+  background: var(--blue);
+}
 .project-heading h2 {
   font-size: 24px;
   font-weight: 700;

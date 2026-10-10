@@ -4,12 +4,20 @@ import Experience from './pages/Experience'
 import SkillsEducation from './pages/SkillsEducation'
 import TechStack from './pages/TechStack'
 import Projects from './pages/Projects'
+import SingleProject from "./pages/SingleProject";
 import './styles/App.css'
 import { useState } from "react";
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation()
+  const animatePage = [
+    '/',
+    '/experience',
+    '/skills-and-education',
+    '/tech-stack',
+    '/projects',
+  ].includes(location.pathname)
   return (
     <>
       <a className="skip-link" href="#main">
@@ -63,13 +71,17 @@ export default function App() {
         <span aria-hidden="true">{menuOpen ? "×" : "☰"}</span>
       </button>
       <main id="main" className="page-width">
-        <div className="page-transition" key={location.pathname}>
+        <div
+          className={animatePage ? "page-transition" : undefined}
+          key={location.pathname}
+        >
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/experience" element={<Experience />} />
             <Route path="/skills-and-education" element={<SkillsEducation />} />
             <Route path="/tech-stack" element={<TechStack />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/:slug" element={<SingleProject />} />
             <Route path="/about" element={<Navigate to="/" replace />} />
             <Route
               path="*"

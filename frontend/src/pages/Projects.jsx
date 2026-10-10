@@ -1,6 +1,6 @@
 import useWordPress from '../hooks/useWordPress'
 import plainText from '../utils/plainText'
-
+import { Link } from "react-router";
 export default function Projects() {
   const { data: projects, loading, error } = useWordPress('project?_embed=1')
   return (
@@ -17,13 +17,27 @@ export default function Projects() {
             <article className="project-card" key={project.id}>
               {image?.source_url && (
                 <div className="project-visual">
-                  <img src={image.source_url} alt={image.alt_text || ''} loading="lazy" />
+                  <img
+                    src={image.source_url}
+                    alt={image.alt_text || ""}
+                    loading="lazy"
+                  />
                 </div>
               )}
-              <div className="project-heading"><h2>{title}</h2></div>
-              <p className="project-description">{plainText(project.content?.rendered)}</p>
+              <div className="project-heading">
+                <h2>{title}</h2>
+              </div>
+              <p className="project-description">
+                {plainText(project.content?.rendered)}
+              </p>
+              <Link
+                className="project-details-link"
+                to={`/projects/${project.slug}`}
+              >
+                View details
+              </Link>
             </article>
-          )
+          );
         })}
       </div>
     </section>
