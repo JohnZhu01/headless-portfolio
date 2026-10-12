@@ -199,6 +199,18 @@ img {
   margin-top: 0;
 }
 
+.home-rich-content {
+  white-space: normal;
+}
+
+.home-rich-content > * + * {
+  margin-top: 1rem;
+}
+
+.home-rich-content h2 {
+  margin-top: 2rem;
+}
+
 @media (min-width: 48rem) {
   .home-layout {
     flex-direction: row;

@@ -58,7 +58,14 @@ export default function Home() {
           <div className="home-content">
             {loading && <p className="status" role="status">Loading home page...</p>}
             {error && <p className="status" role="alert">Could not load the home page: {error}</p>}
-            {home && plainText(home.content?.rendered)}
+            {home && (
+              <div
+                className="home-rich-content"
+                dangerouslySetInnerHTML={{
+                  __html: home.content?.rendered || '',
+                }}
+              />
+            )}
             {!loading && !error && !home && (
               <p>Front-end web developer building responsive, user-friendly websites.</p>
             )}
