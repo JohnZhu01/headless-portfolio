@@ -1,19 +1,17 @@
 import { Link, Navigate, NavLink, Route, Routes, useLocation } from 'react-router'
 import Home from './pages/Home'
+import Projects from './pages/Projects'
 import Experience from './pages/Experience'
 import SkillsEducation from './pages/SkillsEducation'
-import TechStack from './pages/TechStack'
-import Projects from './pages/Projects'
 import SingleProject from "./pages/SingleProject";
 import './styles/App.css'
 import { useState } from "react";
 
 const pageOrder = [
   '/',
+  '/projects',
   '/experience',
   '/skills-and-education',
-  '/tech-stack',
-  '/projects',
 ]
 
 export default function App() {
@@ -42,7 +40,6 @@ export default function App() {
       <header className="site-header">
         <Link className="wordmark" to="/" aria-label="Johnny Zhu home">
           <span className="wordmark-name">Johnny Zhu<span aria-hidden="true">.</span></span>
-          <span className="wordmark-role">Frontend Web Developer</span>
         </Link>
         <nav
           id="main-navigation"
@@ -52,6 +49,9 @@ export default function App() {
           <NavLink to="/" end onClick={() => setMenuOpen(false)}>
             Home
           </NavLink>
+          <NavLink to="/projects" onClick={() => setMenuOpen(false)}>
+            Projects
+          </NavLink>
           <NavLink to="/experience" onClick={() => setMenuOpen(false)}>
             Experience
           </NavLink>
@@ -60,12 +60,6 @@ export default function App() {
             onClick={() => setMenuOpen(false)}
           >
             Skills &amp; Education
-          </NavLink>
-          <NavLink to="/tech-stack" onClick={() => setMenuOpen(false)}>
-            Tech Stack
-          </NavLink>
-          <NavLink to="/projects" onClick={() => setMenuOpen(false)}>
-            Projects
           </NavLink>
         </nav>
       </header>
@@ -87,7 +81,7 @@ export default function App() {
       >
         <span aria-hidden="true">{menuOpen ? "×" : "☰"}</span>
       </button>
-      <main id="main" className="page-width">
+      <main id="main" className={`page-width${location.pathname === '/' ? ' home-page-width' : ''}`}>
         <div
           className={animatePage ? "page-transition" : undefined}
           style={{ '--slide-from': transition.slideFrom }}
@@ -95,11 +89,11 @@ export default function App() {
         >
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/experience" element={<Experience />} />
-            <Route path="/skills-and-education" element={<SkillsEducation />} />
-            <Route path="/tech-stack" element={<TechStack />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:slug" element={<SingleProject />} />
+            <Route path="/experience" element={<Experience />} />
+            <Route path="/skills-and-education" element={<SkillsEducation />} />
+            <Route path="/tech-stack" element={<Navigate to="/" replace />} />
             <Route path="/about" element={<Navigate to="/" replace />} />
             <Route
               path="*"

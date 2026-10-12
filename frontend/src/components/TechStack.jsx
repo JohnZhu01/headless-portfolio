@@ -51,7 +51,7 @@ export default function TechStack() {
 
   return (
         <section className="tech-stack-section" aria-labelledby="tech-stack-title">
-          <div className="section-heading"><h1 id="tech-stack-title">Tech Stack</h1></div>
+          <div className="section-heading"><h2 id="tech-stack-title">Tech Stack</h2></div>
           {techLoading && <p className="status" role="status">Loading tech stack...</p>}
           {techError && <p className="status" role="alert">Could not load the tech stack: {techError}</p>}
           {!techLoading && !techError && !populatedCategories.length && (
@@ -59,7 +59,7 @@ export default function TechStack() {
           )}
           {populatedCategories.map((category) => (
             <div className="tech-category" key={category.id}>
-              <h2>{plainText(category.name)}</h2>
+              <h3>{plainText(category.name)}</h3>
               <ul className="tech-tools">
                 {category.acf.tools.map((tool, index) => {
                   const logoUrl = toolIcon(tool)
@@ -67,7 +67,7 @@ export default function TechStack() {
                     <li className="tech-tool" key={`${category.id}-${index}`}>
                       {logoUrl && <img className="tech-logo" src={logoUrl} alt="" loading="lazy" />}
                       <div>
-                        <h3>{tool.tool_name}</h3>
+                        <h4>{tool.tool_name}</h4>
                         {tool.short_description && <p>{tool.short_description}</p>}
                       </div>
                     </li>

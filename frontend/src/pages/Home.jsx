@@ -1,3 +1,4 @@
+import TechStack from '../components/TechStack'
 import useWordPress from '../hooks/useWordPress'
 import plainText from '../utils/plainText'
 import githubIcon from 'devicon/icons/github/github-original.svg'
@@ -16,7 +17,6 @@ export default function Home() {
   const photo = home?._embedded?.['wp:featuredmedia']?.[0]
   return (
     <article className="hero" aria-labelledby="home-title">
-      <h1 id="home-title">{plainText(home?.title?.rendered) || 'Johnny Zhu'}</h1>
         <div className="home-layout">
           <aside className="home-profile" aria-label="Profile and contact">
             {photo?.source_url ? (
@@ -24,6 +24,7 @@ export default function Home() {
             ) : (
               <div className="profile-photo profile-placeholder" aria-label="Profile photo placeholder">JZ</div>
             )}
+            <p className="profile-role">Front End Web Developer</p>
             <h2>Contact</h2>
             <ul className="contact-links">
               <li>
@@ -55,7 +56,9 @@ export default function Home() {
               </li>
             </ul>
           </aside>
-          <div className="home-content">
+          <div className="home-main">
+            <h1 id="home-title">{plainText(home?.title?.rendered) || 'Johnny Zhu'}</h1>
+            <div className="home-content">
             {loading && <p className="status" role="status">Loading home page...</p>}
             {error && <p className="status" role="alert">Could not load the home page: {error}</p>}
             {home && (
@@ -69,6 +72,8 @@ export default function Home() {
             {!loading && !error && !home && (
               <p>Front-end web developer building responsive, user-friendly websites.</p>
             )}
+            </div>
+            <TechStack />
           </div>
         </div>
     </article>
