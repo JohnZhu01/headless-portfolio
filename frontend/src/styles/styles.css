@@ -1,6 +1,6 @@
 :root {
-  --font-body: Arial, Helvetica, sans-serif;
-  --font-heading: var(--font-body);
+  --font-body: 'DM Sans', Arial, Helvetica, sans-serif;
+  --font-heading: 'Space Grotesk', Arial, Helvetica, sans-serif;
   --font-mono: Consolas, monospace;
   font-family: var(--font-body);
   color: #181818;
@@ -115,6 +115,14 @@ summary:focus-visible {
   text-decoration: none;
 }
 
+.wordmark-role {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.4;
+}
+
 .wordmark span, .accent {
   color: var(--accent);
 }
@@ -148,16 +156,17 @@ summary:focus-visible {
 }
 
 .site-header .main-navigation {
-  background: #F5F1E8;
-  border: 1px solid var(--line);
-  color: #181818;
+  background: #181818;
+  border: 1px solid #333;
+  color: #fff;
+  font-size: clamp(1.25rem, 0.75rem + 2.5vw, 1.75rem);
 }
 
 .menu-toggle {
-  border: 1px solid var(--line);
+  border: 1px solid var(--blue);
   border-radius: 50%;
-  background: #181818;
-  color: #F5F1E8;
+  background: var(--blue);
+  color: #fff;
   font-size: 26px;
 }
 
@@ -199,6 +208,36 @@ summary:focus-visible {
 .home-content {
   font-size: 18px;
   line-height: 1.8;
+}
+
+.profile-photo {
+  border-radius: 50%;
+}
+
+.profile-placeholder {
+  background: #F3F4F6;
+  color: var(--muted);
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+}
+
+.home-profile h2 {
+  font-size: 1.25rem;
+}
+
+.contact-links {
+  list-style: none;
+}
+
+.contact-links a,
+.contact-placeholder {
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #fff;
+}
+
+.contact-links a:hover {
+  border-color: var(--blue);
 }
 
 .content-entry {
@@ -303,7 +342,7 @@ summary:focus-visible {
   letter-spacing: -.6px;
 }
 .project-card {
-  background: #fff;
+  background: #F3F4F6;
   border: 1px solid var(--line);
   border-radius: 8px;
   box-shadow: 0 3px 8px rgb(0 0 0 / 9%);
@@ -338,5 +377,6 @@ summary:focus-visible {
     border: 0;
     background: transparent;
     color: #fff;
+    font-size: 14px;
   }
 }

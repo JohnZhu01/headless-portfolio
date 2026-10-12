@@ -8,24 +8,41 @@ import SingleProject from "./pages/SingleProject";
 import './styles/App.css'
 import { useState } from "react";
 
+const pageOrder = [
+  '/',
+  '/experience',
+  '/skills-and-education',
+  '/tech-stack',
+  '/projects',
+]
+
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation()
-  const animatePage = [
-    '/',
-    '/experience',
-    '/skills-and-education',
-    '/tech-stack',
-    '/projects',
-  ].includes(location.pathname)
+  const currentIndex = pageOrder.indexOf(location.pathname)
+  const animatePage = currentIndex >= 0
+  const [transition, setTransition] = useState({
+    pathname: location.pathname,
+    pageIndex: currentIndex,
+    slideFrom: '100vw',
+  })
+
+  if (transition.pathname !== location.pathname) {
+    setTransition({
+      pathname: location.pathname,
+      pageIndex: animatePage ? currentIndex : transition.pageIndex,
+      slideFrom: animatePage && currentIndex < transition.pageIndex ? '-100vw' : '100vw',
+    })
+  }
   return (
     <>
       <a className="skip-link" href="#main">
         Skip to content
       </a>
       <header className="site-header">
-        <Link className="wordmark" to="/" aria-label="John Zhu home">
-          John Zhu<span aria-hidden="true">.</span>
+        <Link className="wordmark" to="/" aria-label="Johnny Zhu home">
+          <span className="wordmark-name">Johnny Zhu<span aria-hidden="true">.</span></span>
+          <span className="wordmark-role">Frontend Web Developer</span>
         </Link>
         <nav
           id="main-navigation"
@@ -73,6 +90,7 @@ export default function App() {
       <main id="main" className="page-width">
         <div
           className={animatePage ? "page-transition" : undefined}
+          style={{ '--slide-from': transition.slideFrom }}
           key={location.pathname}
         >
           <Routes>
@@ -95,9 +113,6 @@ export default function App() {
           </Routes>
         </div>
       </main>
-      <footer className="site-footer page-width">
-        <p>&copy; {new Date().getFullYear()} John Zhu</p>
-      </footer>
     </>
   );
 }

@@ -1,23 +1,29 @@
-import {Link, useParams} from 'react-router'
-import useWordPress from '../hooks/useWordPress.js'
-import plainText from '../utils/plainText.js'
+import { Link, useParams } from "react-router";
+import useWordPress from "../hooks/useWordPress.js";
+import plainText from "../utils/plainText.js";
 
 export default function SingleProject() {
-  const { slug } = useParams()
+  const { slug } = useParams();
 
-  const { data: projects, loading, error } = useWordPress(
-    `project?slug=${encodeURIComponent(slug)}&_embed=1`,
-  )
+  const {
+    data: projects,
+    loading,
+    error,
+  } = useWordPress(`project?slug=${encodeURIComponent(slug)}&_embed=1`);
 
-  const project = projects[0]
-  const image = project?._embedded?.['wp:featuredmedia']?.[0]
+  const project = projects[0];
+  const image = project?._embedded?.["wp:featuredmedia"]?.[0];
+  const liveUrl = project?.acf?.live_project_url;
+  const repoUrl = project?.acf?.repository_url;
 
   return (
     <article className="content-page">
       <Link to="/projects">← Back to projects</Link>
 
       {loading && (
-        <p className="status" role="status">Loading project...</p>
+        <p className="status" role="status">
+          Loading project...
+        </p>
       )}
 
       {error && (
@@ -26,9 +32,7 @@ export default function SingleProject() {
         </p>
       )}
 
-      {!loading && !error && !project && (
-        <h1>Project not found</h1>
-      )}
+      {!loading && !error && !project && <h1>Project not found</h1>}
 
       {project && (
         <>
@@ -37,17 +41,29 @@ export default function SingleProject() {
           </div>
 
           {image?.source_url && (
-            <img
-              src={image.source_url}
-              alt={image.alt_text || ''}
-            />
+            <img className="project-featured-image" src={image.source_url} alt={image.alt_text || ""} />
           )}
+          <div className="project-links">
+            {liveUrl && (
+              <a className="project-details-link" href={liveUrl}>
+                View Live Project
+              </a>
+            )}
 
-          <div className="page-copy">
-            {plainText(project.content?.rendered)}
+            {repoUrl && (
+              <a className="project-details-link" href={repoUrl}>
+                View Code
+              </a>
+            )}
           </div>
+          <div
+            className="project-content"
+            dangerouslySetInnerHTML={{
+              __html: project.content?.rendered || "",
+            }}
+          />
         </>
       )}
     </article>
-  )
+  );
 }

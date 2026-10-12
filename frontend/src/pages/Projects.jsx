@@ -1,5 +1,6 @@
 import useWordPress from '../hooks/useWordPress'
 import plainText from '../utils/plainText'
+import projectOverview from '../utils/projectOverview'
 import { Link } from "react-router";
 export default function Projects() {
   const { data: projects, loading, error } = useWordPress('project?_embed=1')
@@ -28,7 +29,7 @@ export default function Projects() {
                 <h2>{title}</h2>
               </div>
               <p className="project-description">
-                {plainText(project.content?.rendered)}
+                {projectOverview(project.content?.rendered)}
               </p>
               <Link
                 className="project-details-link"

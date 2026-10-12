@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import toolIcon from '../utils/toolIcons'
 
 function plainText(html = '') {
   const document = new DOMParser().parseFromString(html, 'text/html')
@@ -61,7 +62,7 @@ export default function TechStack() {
               <h2>{plainText(category.name)}</h2>
               <ul className="tech-tools">
                 {category.acf.tools.map((tool, index) => {
-                  const logoUrl = typeof tool.logo === 'string' ? tool.logo : tool.logo?.url
+                  const logoUrl = toolIcon(tool)
                   return (
                     <li className="tech-tool" key={`${category.id}-${index}`}>
                       {logoUrl && <img className="tech-logo" src={logoUrl} alt="" loading="lazy" />}
