@@ -9,7 +9,7 @@ const contact = {
   email: "jz95zhu@gmail.com",
   github: "https://github.com/JohnZhu01",
   linkedin:
-    "https://www.linkedin.com/in/johnny-zhu-954621320/",
+    "https://www.linkedin.com/in/johnny-zhu-7b6a54218/",
 };
 
 export default function Home() {
