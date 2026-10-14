@@ -205,12 +205,14 @@ summary:focus-visible {
   color: var(--muted);
 }
 
-.home-content {
+.home-content,
+.project-content {
   font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
   line-height: 1.7;
 }
 
-.home-rich-content h2 {
+.home-rich-content h2,
+.project-content h2 {
   font-size: clamp(1.5rem, 1.25rem + 0.75vw, 2rem);
 }
 

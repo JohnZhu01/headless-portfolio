@@ -5,7 +5,7 @@ import Experience from './pages/Experience'
 import SkillsEducation from './pages/SkillsEducation'
 import SingleProject from "./pages/SingleProject";
 import './styles/App.css'
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const pageOrder = [
   '/',
@@ -16,6 +16,50 @@ const pageOrder = [
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigationRef = useRef(null)
+  const menuButtonRef = useRef(null)
+
+  function closeMenu() {
+    setMenuOpen(false)
+    menuButtonRef.current?.focus({ preventScroll: true })
+  }
+
+  useEffect(() => {
+    if (!menuOpen) return
+    const desktop = window.matchMedia('(min-width: 641px)')
+    if (desktop.matches) return
+    navigationRef.current?.querySelector('a')?.focus({ preventScroll: true })
+
+    function handleKeyDown(event) {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        setMenuOpen(false)
+        menuButtonRef.current?.focus({ preventScroll: true })
+      } else if (event.key === 'Tab') {
+        const controls = [...navigationRef.current.querySelectorAll('a'), menuButtonRef.current]
+        const current = controls.indexOf(document.activeElement)
+        const next = event.shiftKey
+          ? (current <= 0 ? controls.length - 1 : current - 1)
+          : (current + 1) % controls.length
+        event.preventDefault()
+        controls[next]?.focus({ preventScroll: true })
+      }
+    }
+
+    function handleResize(event) {
+      if (event.matches) {
+        setMenuOpen(false)
+        navigationRef.current?.querySelector('a[aria-current="page"]')?.focus({ preventScroll: true })
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+    desktop.addEventListener('change', handleResize)
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+      desktop.removeEventListener('change', handleResize)
+    }
+  }, [menuOpen])
   const location = useLocation()
   const currentIndex = pageOrder.indexOf(location.pathname)
   const animatePage = currentIndex >= 0
@@ -42,22 +86,23 @@ export default function App() {
           <span className="wordmark-name">Johnny Zhu<span aria-hidden="true">.</span></span>
         </Link>
         <nav
+          ref={navigationRef}
           id="main-navigation"
           className={`main-navigation ${menuOpen ? "is-open" : ""}`}
           aria-label="Main navigation"
         >
-          <NavLink to="/" end onClick={() => setMenuOpen(false)}>
+          <NavLink to="/" end onClick={() => { if (menuOpen) closeMenu() }}>
             Home
           </NavLink>
-          <NavLink to="/projects" onClick={() => setMenuOpen(false)}>
+          <NavLink to="/projects" onClick={() => { if (menuOpen) closeMenu() }}>
             Projects
           </NavLink>
-          <NavLink to="/experience" onClick={() => setMenuOpen(false)}>
+          <NavLink to="/experience" onClick={() => { if (menuOpen) closeMenu() }}>
             Experience
           </NavLink>
           <NavLink
             to="/skills-and-education"
-            onClick={() => setMenuOpen(false)}
+            onClick={() => { if (menuOpen) closeMenu() }}
           >
             Skills &amp; Education
           </NavLink>
@@ -68,10 +113,12 @@ export default function App() {
           className="menu-backdrop"
           type="button"
           aria-label="Close navigation"
-          onClick={() => setMenuOpen(false)}
+          tabIndex={-1}
+          onClick={closeMenu}
         />
       )}
       <button
+        ref={menuButtonRef}
         className="menu-toggle"
         type="button"
         aria-controls="main-navigation"
@@ -83,7 +130,7 @@ export default function App() {
       </button>
       <main id="main" className={`page-width${location.pathname === '/' ? ' home-page-width' : ''}`}>
         <div
-          className={animatePage ? "page-transition" : undefined}
+          className="page-transition"
           style={{ '--slide-from': transition.slideFrom }}
           key={location.pathname}
         >

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import useWordPress from '../hooks/useWordPress'
 import toolIcon from '../utils/toolIcons'
 
 function plainText(html = '') {
@@ -11,32 +11,9 @@ function plainText(html = '') {
 }
 
 export default function TechStack() {
-  const [techCategories, setTechCategories] = useState([])
-  const [techError, setTechError] = useState('')
-  const [techLoading, setTechLoading] = useState(true)
-
-  useEffect(() => {
-    const controller = new AbortController()
-    async function loadTechStack() {
-      try {
-        const apiBase = import.meta.env.VITE_WP_API_URL?.replace(/\/$/, '')
-        if (!apiBase) throw new Error('The WordPress API URL is missing.')
-        const response = await fetch(`${apiBase}/tech-stack-category?per_page=100&hide_empty=false&acf_format=standard`, {
-          signal: controller.signal,
-        })
-        if (!response.ok) throw new Error(`WordPress returned ${response.status}.`)
-        const categories = await response.json()
-        if (!Array.isArray(categories)) throw new Error('WordPress returned an unexpected response.')
-        if (!controller.signal.aborted) setTechCategories(categories)
-      } catch (error) {
-        if (!controller.signal.aborted) setTechError(error.message)
-      } finally {
-        if (!controller.signal.aborted) setTechLoading(false)
-      }
-    }
-    loadTechStack()
-    return () => controller.abort()
-  }, [])
+  const { data: techCategories, loading: techLoading, error: techError } = useWordPress(
+    'tech-stack-category?hide_empty=false&acf_format=standard',
+  )
 
   const populatedCategories = techCategories
     .filter(

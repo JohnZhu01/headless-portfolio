@@ -20,11 +20,7 @@ export default function SingleProject() {
     <article className="content-page">
       <Link to="/projects">← Back to projects</Link>
 
-      {loading && (
-        <p className="status" role="status">
-          Loading project...
-        </p>
-      )}
+      {loading && <p className="status" role="status">Loading project...</p>}
 
       {error && (
         <p className="status" role="alert">

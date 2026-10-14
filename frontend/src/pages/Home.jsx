@@ -6,10 +6,11 @@ import linkedinIcon from 'devicon/icons/linkedin/linkedin-original.svg'
 import emailIcon from '../assets/email.svg'
 
 const contact = {
-  email: '',
-  github: 'https://github.com/JohnZhu01',
-  linkedin: '',
-}
+  email: "jz95zhu@gmail.com",
+  github: "https://github.com/JohnZhu01",
+  linkedin:
+    "https://www.linkedin.com/in/johnny-zhu-954621320/",
+};
 
 export default function Home() {
   const { data: pages, loading, error } = useWordPress('pages?slug=about&_embed=1')
