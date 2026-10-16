@@ -232,9 +232,19 @@ summary:focus-visible {
 }
 
 .profile-role {
-  font-size: 0.9375rem;
-  font-weight: 500;
-  color: var(--muted);
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 1rem + 0.75vw, 1.625rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: #181818;
+  text-wrap: balance;
+}
+
+.profile-role::before {
+  content: '';
+  background: var(--blue);
+  border-radius: 999px;
 }
 
 .contact-links {
