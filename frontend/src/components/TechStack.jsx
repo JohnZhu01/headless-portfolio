@@ -1,5 +1,6 @@
 import useWordPress from '../hooks/useWordPress'
 import toolIcon from '../utils/toolIcons'
+import LoadingState from './LoadingState'
 
 function plainText(html = '') {
   const document = new DOMParser().parseFromString(html, 'text/html')
@@ -29,7 +30,7 @@ export default function TechStack() {
   return (
         <section className="tech-stack-section" aria-labelledby="tech-stack-title">
           <div className="section-heading"><h2 id="tech-stack-title">Tech Stack</h2></div>
-          {techLoading && <p className="status" role="status">Loading tech stack...</p>}
+          {techLoading && <LoadingState label="Loading tech stack…" />}
           {techError && <p className="status" role="alert">Could not load the tech stack: {techError}</p>}
           {!techLoading && !techError && !populatedCategories.length && (
             <p className="status">No tools have been added yet.</p>

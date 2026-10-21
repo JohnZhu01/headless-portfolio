@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router";
 import useWordPress from "../hooks/useWordPress.js";
 import plainText from "../utils/plainText.js";
+import LoadingState from "../components/LoadingState";
 
 export default function SingleProject() {
   const { slug } = useParams();
@@ -20,7 +21,7 @@ export default function SingleProject() {
     <article className="content-page">
       <Link to="/projects">← Back to projects</Link>
 
-      {loading && <p className="status" role="status">Loading project...</p>}
+      {loading && <LoadingState label="Loading project…" />}
 
       {error && (
         <p className="status" role="alert">

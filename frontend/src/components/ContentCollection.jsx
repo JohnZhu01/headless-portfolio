@@ -1,5 +1,6 @@
 import useWordPress from '../hooks/useWordPress'
 import plainText from '../utils/plainText'
+import LoadingState from './LoadingState'
 
 export default function ContentCollection({ title, endpoint, headingId, variant, priorityIds = [] }) {
   const { data: entries, loading, error } = useWordPress(endpoint + '?_embed=1')
@@ -12,7 +13,7 @@ export default function ContentCollection({ title, endpoint, headingId, variant,
   return (
     <section className="content-page" aria-labelledby={headingId}>
       <div className="section-heading"><h1 id={headingId}>{title}</h1></div>
-      {loading && <p className="status" role="status">Loading {title.toLowerCase()}...</p>}
+      {loading && <LoadingState label={`Loading ${title.toLowerCase()}…`} />}
       {error && <p className="status" role="alert">Could not load {title.toLowerCase()}: {error}</p>}
       {!loading && !error && !entries.length && <p className="status">{title} content is coming soon.</p>}
       <div className={`content-entries ${variant}`}>

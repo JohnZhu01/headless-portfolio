@@ -1,9 +1,11 @@
 import TechStack from '../components/TechStack'
+import LoadingState from '../components/LoadingState'
 import useWordPress from '../hooks/useWordPress'
 import plainText from '../utils/plainText'
 import githubIcon from 'devicon/icons/github/github-original.svg'
 import linkedinIcon from 'devicon/icons/linkedin/linkedin-original.svg'
 import emailIcon from '../assets/email.svg'
+
 
 const contact = {
   email: "jz95zhu@gmail.com",
@@ -60,7 +62,7 @@ export default function Home() {
           <div className="home-main">
             <h1 id="home-title">{plainText(home?.title?.rendered) || 'Johnny Zhu'}</h1>
             <div className="home-content">
-            {loading && <p className="status" role="status">Loading home page...</p>}
+            {loading && <LoadingState label="Loading home page…" />}
             {error && <p className="status" role="alert">Could not load the home page: {error}</p>}
             {home && (
               <div
