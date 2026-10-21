@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import Projects from './pages/Projects'
 import Experience from './pages/Experience'
 import SkillsEducation from './pages/SkillsEducation'
+import NotFound from './pages/NotFound'
 import SingleProject from "./pages/SingleProject";
 import './styles/App.css'
 import './styles/animations.css'
@@ -152,15 +153,7 @@ export default function App() {
             <Route path="/skills-and-education" element={<SkillsEducation />} />
             <Route path="/tech-stack" element={<Navigate to="/" replace />} />
             <Route path="/about" element={<Navigate to="/" replace />} />
-            <Route
-              path="*"
-              element={
-                <section className="hero">
-                  <h1>Page not found</h1>
-                  <Link to="/">Return home</Link>
-                </section>
-              }
-            />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </main>
