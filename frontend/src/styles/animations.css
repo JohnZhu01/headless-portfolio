@@ -112,6 +112,10 @@ html {
 }
 /* Reduced-motion overrides */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .page-transition,
   .loader,
   .loader::after,
@@ -119,4 +123,11 @@ html {
     animation: none;
   }
 
+  .loader {
+    background: none;
+  }
+
+  .loader::after {
+    display: none;
+  }
 }
