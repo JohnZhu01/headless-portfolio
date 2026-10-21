@@ -62,6 +62,15 @@ export default function App() {
     }
   }, [menuOpen])
   const location = useLocation()
+  const previousPath = useRef(location.pathname)
+
+  useEffect(() => {
+    if (previousPath.current === location.pathname) return
+
+    previousPath.current = location.pathname
+    document.getElementById('main')?.focus({ preventScroll: true })
+  }, [location.pathname])
+
   const currentIndex = pageOrder.indexOf(location.pathname)
   const animatePage = currentIndex >= 0
   const [transition, setTransition] = useState({
@@ -129,7 +138,7 @@ export default function App() {
       >
         <span aria-hidden="true">{menuOpen ? "×" : "☰"}</span>
       </button>
-      <main id="main" className={`page-width${location.pathname === '/' ? ' home-page-width' : ''}`}>
+      <main id="main" tabIndex={-1} className={`page-width${location.pathname === '/' ? ' home-page-width' : ''}`}>
         <div
           className="page-transition"
           style={{ '--slide-from': transition.slideFrom }}
