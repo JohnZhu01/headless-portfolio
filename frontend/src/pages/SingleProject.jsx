@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router";
 import useWordPress from "../hooks/useWordPress.js";
 import plainText from "../utils/plainText.js";
 import LoadingState from "../components/LoadingState";
-
+import { useEffect } from "react";
 export default function SingleProject() {
   const { slug } = useParams();
 
@@ -13,6 +13,17 @@ export default function SingleProject() {
   } = useWordPress(`project?slug=${encodeURIComponent(slug)}&_embed=1`);
 
   const project = projects[0];
+  useEffect(() => {
+    if (loading) {
+      document.title = "Loading project | Johnny Zhu";
+    } else if (error) {
+      document.title = "Project unavailable | Johnny Zhu";
+    } else if (project) {
+      document.title = `${plainText(project.title?.rendered)} | Johnny Zhu`;
+    } else {
+      document.title = "Project not found | Johnny Zhu";
+    }
+  }, [project, loading, error]);
   const image = project?._embedded?.["wp:featuredmedia"]?.[0];
   const liveUrl = project?.acf?.live_project_url;
   const repoUrl = project?.acf?.repository_url;
@@ -38,7 +49,13 @@ export default function SingleProject() {
           </div>
 
           {image?.source_url && (
-            <img className="project-featured-image" src={image.source_url} alt={image.alt_text || ""} />
+            <img
+              className="project-featured-image"
+              src={image.source_url}
+              alt={image.alt_text || ""}
+              width={image.media_details?.width}
+              height={image.media_details?.height}
+            />
           )}
           <div className="project-links">
             {liveUrl && (
