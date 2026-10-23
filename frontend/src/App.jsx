@@ -1,5 +1,5 @@
-import useMobileMenu from './hooks/useMobileMenu'
-import { Link, Navigate, NavLink, Route, Routes, useLocation } from 'react-router'
+import Header from './components/Header'
+import { Navigate, Route, Routes, useLocation } from 'react-router'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
 import Experience from './pages/Experience'
@@ -16,7 +16,6 @@ const pageOrder = [
   '/skills-and-education',
 ]
 export default function App() {
-  const { menuOpen, navigationRef, menuButtonRef, closeMenu, toggleMenu } = useMobileMenu()
 
   const location = useLocation()
   const previousPath = useRef(location.pathname)
@@ -48,53 +47,7 @@ export default function App() {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <header className="site-header">
-        <Link className="wordmark" to="/" aria-label="Johnny Zhu home">
-          <span className="wordmark-name">Johnny Zhu</span>
-        </Link>
-        <nav
-          ref={navigationRef}
-          id="main-navigation"
-          className={`main-navigation ${menuOpen ? "is-open" : ""}`}
-          aria-label="Main navigation"
-        >
-          <NavLink to="/" end onClick={() => { if (menuOpen) closeMenu() }}>
-            Home
-          </NavLink>
-          <NavLink to="/projects" onClick={() => { if (menuOpen) closeMenu() }}>
-            Projects
-          </NavLink>
-          <NavLink to="/experience" onClick={() => { if (menuOpen) closeMenu() }}>
-            Experience
-          </NavLink>
-          <NavLink
-            to="/skills-and-education"
-            onClick={() => { if (menuOpen) closeMenu() }}
-          >
-            Skills &amp; Education
-          </NavLink>
-        </nav>
-      </header>
-      {menuOpen && (
-        <button
-          className="menu-backdrop"
-          type="button"
-          aria-label="Close navigation"
-          tabIndex={-1}
-          onClick={closeMenu}
-        />
-      )}
-      <button
-        ref={menuButtonRef}
-        className="menu-toggle"
-        type="button"
-        aria-controls="main-navigation"
-        aria-expanded={menuOpen}
-        aria-label={menuOpen ? "Close navigation" : "Open navigation"}
-        onClick={toggleMenu}
-      >
-        <span aria-hidden="true">{menuOpen ? "×" : "☰"}</span>
-      </button>
+      <Header />
       <main id="main" tabIndex={-1} className={`page-width${location.pathname === '/' ? ' home-page-width' : ''}`}>
         <div
           className="page-transition"
