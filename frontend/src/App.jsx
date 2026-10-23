@@ -93,7 +93,7 @@ export default function App() {
       </a>
       <header className="site-header">
         <Link className="wordmark" to="/" aria-label="Johnny Zhu home">
-          <span className="wordmark-name">Johnny Zhu<span aria-hidden="true">.</span></span>
+          <span className="wordmark-name">Johnny Zhu</span>
         </Link>
         <nav
           ref={navigationRef}
