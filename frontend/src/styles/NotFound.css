@@ -1,0 +1,32 @@
+/* Page layout */
+
+.not-found {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  padding-block: clamp(3rem, 10vh, 7rem);
+  text-align: center;
+}
+
+/* Error code and heading */
+
+.not-found-code {
+  font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+  font-size: clamp(5rem, 20vw, 10rem);
+  font-weight: 700;
+  line-height: 1;
+  color: #2F7CAD;
+}
+
+.not-found h1 {
+  font-size: clamp(1.75rem, 5vw, 3rem);
+}
+
+/* Navigation links */
+
+.not-found-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}

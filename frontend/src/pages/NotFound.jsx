@@ -1,3 +1,4 @@
+import '../styles/NotFound.css'
 import { Link } from "react-router";
 import SEO from "../components/SEO";
 export default function NotFound() {

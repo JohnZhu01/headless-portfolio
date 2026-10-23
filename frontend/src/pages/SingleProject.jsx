@@ -1,3 +1,4 @@
+import '../styles/SingleProject.css'
 import { Link, useParams } from "react-router";
 import useWordPress from "../hooks/useWordPress.js";
 import plainText from "../utils/plainText.js";
@@ -14,13 +15,15 @@ export default function SingleProject() {
   } = useWordPress(`project?slug=${encodeURIComponent(slug)}&_embed=1`);
 
   const project = projects[0];
-  const seoTitle = loading
-  ? 'Loading project'
-  : error
-    ? 'Project unavailable'
-    : project
-      ? plainText(project.title?.rendered) || 'Project'
-      : 'Project not found'
+  let seoTitle = "Project not found";
+
+  if (loading) {
+    seoTitle = "Loading project";
+  } else if (error) {
+    seoTitle = "Project unavailable";
+  } else if (project) {
+    seoTitle = plainText(project.title?.rendered) || "Project";
+  }
 
 const seoDescription = project
   ? projectOverview(project.content?.rendered) ||

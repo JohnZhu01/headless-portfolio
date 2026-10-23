@@ -5,7 +5,6 @@ import Experience from './pages/Experience'
 import SkillsEducation from './pages/SkillsEducation'
 import NotFound from './pages/NotFound'
 import SingleProject from "./pages/SingleProject";
-import './styles/App.css'
 import './styles/animations.css'
 import { useEffect, useRef, useState } from "react";
 

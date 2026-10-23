@@ -1,3 +1,4 @@
+import '../styles/ContentCollection.css'
 import useWordPress from '../hooks/useWordPress'
 import plainText from '../utils/plainText'
 import LoadingState from './LoadingState'

@@ -1,3 +1,4 @@
+import '../styles/Home.css'
 import TechStack from '../components/TechStack'
 import LoadingState from '../components/LoadingState'
 import useWordPress from '../hooks/useWordPress'
@@ -45,21 +46,12 @@ export default function Home() {
           <h2>Contact</h2>
           <ul className="contact-links">
             <li>
-              {contact.email ? (
-                <a
-                  href={`mailto:${contact.email}`}
-                  aria-label="Email Johnny Zhu"
-                >
-                  <img src={emailIcon} alt="" />
-                </a>
-              ) : (
-                <span
-                  className="contact-placeholder"
-                  aria-label="Email link coming soon"
-                >
-                  <img src={emailIcon} alt="" />
-                </span>
-              )}
+              <a
+                href={`mailto:${contact.email}`}
+                aria-label="Email Johnny Zhu"
+              >
+                <img src={emailIcon} alt="" />
+              </a>
             </li>
             <li>
               <a href={contact.github} aria-label="Johnny Zhu on GitHub">
@@ -67,18 +59,9 @@ export default function Home() {
               </a>
             </li>
             <li>
-              {contact.linkedin ? (
-                <a href={contact.linkedin} aria-label="Johnny Zhu on LinkedIn">
-                  <img src={linkedinIcon} alt="" />
-                </a>
-              ) : (
-                <span
-                  className="contact-placeholder"
-                  aria-label="LinkedIn link coming soon"
-                >
-                  <img src={linkedinIcon} alt="" />
-                </span>
-              )}
+              <a href={contact.linkedin} aria-label="Johnny Zhu on LinkedIn">
+                <img src={linkedinIcon} alt="" />
+              </a>
             </li>
           </ul>
         </aside>

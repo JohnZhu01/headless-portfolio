@@ -1,9 +1,11 @@
 /* Smooth scrolling */
+
 html {
   scroll-behavior: smooth;
 }
 
 /* Page transitions */
+
 .page-transition {
   animation: none;
 }
@@ -27,6 +29,7 @@ html {
 }
 
 /* Loading animation - https://css-loaders.com/arcade/ */
+
 .loader {
   width: fit-content;
   font-size: 17px;
@@ -65,9 +68,20 @@ html {
 }
 
 @keyframes l9-0 {
-  0%, 25% { background-size: 50% 100%; }
-  25.1%, 75% { background-size: 0 0, 50% 100%; }
-  75.1%, 100% { background-size: 0 0, 0 0; }
+  0%,
+  25% {
+    background-size: 50% 100%;
+  }
+
+  25.1%,
+  75% {
+    background-size: 0 0, 50% 100%;
+  }
+
+  75.1%,
+  100% {
+    background-size: 0 0, 0 0;
+  }
 }
 
 @keyframes l9-1 {
@@ -75,24 +89,30 @@ html {
     background-position: bottom, bottom 54px left 0, bottom 3px left 0, bottom 0 left 50%;
     left: 0;
   }
+
   25.1% {
     background-position: bottom, bottom 10px left 0, bottom 3px left 0, bottom 0 left 50%;
     left: 0;
   }
+
   50% {
     background-position: bottom, bottom 10px left 0, bottom 3px left 0, bottom 0 left 50%;
     left: calc(100% - 22px);
   }
+
   75% {
     background-position: bottom, bottom 54px left 0, bottom 3px left 0, bottom 0 left 50%;
     left: calc(100% - 22px);
   }
+
   75.1% {
     background-position: bottom, bottom 10px left 0, bottom 3px left 0, bottom 0 left 50%;
     left: calc(100% - 22px);
   }
 }
+
 /* Mobile menu entrance */
+
 @media (max-width: 640px) {
   .main-navigation.is-open {
     animation: menu-enter 300ms ease-out both;
@@ -110,7 +130,9 @@ html {
     transform: translateY(0);
   }
 }
+
 /* Reduced-motion overrides */
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
