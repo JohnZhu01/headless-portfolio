@@ -1,7 +1,7 @@
 # Local credentials and environment files
 .env
 .env.*
-!.env.example
+!.env.template
 /wp-config.php
 
 # Dependencies and generated files
