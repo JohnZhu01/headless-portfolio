@@ -31,9 +31,9 @@ const seoDescription = project
   const repoUrl = project?.acf?.repository_url;
 
   return (
-    <article className="content-page">
+    <article className="content-page single-project">
       <SEO title={seoTitle} description={seoDescription} />
-      <Link to="/projects">← Back to projects</Link>
+      <Link className="project-back-link" to="/projects"><span className="back-arrow" aria-hidden="true">←</span> Back to projects</Link>
 
       {loading && <LoadingState label="Loading project…" />}
 
@@ -53,7 +53,7 @@ const seoDescription = project
 
           {image?.source_url && (
             <img
-              className="project-featured-image"
+              className={`project-featured-image${project.slug === 'personal-portfolio-website' ? ' project-featured-image--portfolio' : ''}`}
               src={image.source_url}
               alt={image.alt_text || ""}
               width={image.media_details?.width}

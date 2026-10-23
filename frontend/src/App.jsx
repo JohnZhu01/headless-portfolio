@@ -62,7 +62,14 @@ export default function App() {
     }
   }, [menuOpen])
   const location = useLocation()
+  const previousPath = useRef(location.pathname)
 
+  useEffect(() => {
+    if (previousPath.current === location.pathname) return
+
+    previousPath.current = location.pathname
+    document.getElementById('main')?.focus({ preventScroll: true })
+  }, [location.pathname])
 
   const currentIndex = pageOrder.indexOf(location.pathname)
   const animatePage = currentIndex >= 0

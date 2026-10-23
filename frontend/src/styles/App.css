@@ -53,9 +53,10 @@ img {
 .section-heading {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
+  justify-content: center;
   gap: 1.25rem;
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 .status {
@@ -150,6 +151,8 @@ img {
   flex-direction: column;
   gap: 2rem;
   margin-top: 0;
+  max-width: 72.5rem;
+  margin-inline: auto;
 }
 
 .home-profile {
@@ -220,6 +223,11 @@ img {
 .home-rich-content {
   white-space: normal;
   max-width: 65ch;
+  margin-inline: auto;
+}
+
+.home-main > h1 {
+  text-align: center;
 }
 
 .home-rich-content > * + * {
@@ -239,7 +247,7 @@ img {
 
   .home-profile {
     flex-basis: 16rem;
-    align-items: flex-start;
+    align-items: center;
     position: sticky;
     top: 8rem;
     align-self: flex-start;
@@ -250,11 +258,11 @@ img {
   }
 
   .profile-role {
-    text-align: left;
+    text-align: center;
   }
 
   .profile-role::before {
-    margin-inline: 0;
+    margin-inline: auto;
   }
 
   .home-main {
@@ -290,7 +298,8 @@ img {
 .experience-timeline {
   max-width: 52rem;
   padding-left: 1.5rem;
-  margin-left: 0.75rem;
+  width: calc(100% - 1.5rem);
+  margin-inline: auto;
 }
 
 .experience-timeline .content-entry {
@@ -309,6 +318,7 @@ img {
 
 .education-cards {
   max-width: 60rem;
+  margin-inline: auto;
 }
 
 .education-cards .content-entry {
@@ -356,6 +366,7 @@ img {
   max-height: 280px;
   object-fit: contain;
   margin-bottom: 20px;
+  margin-inline: auto;
 }
 
 /* Tech Stack */
@@ -420,6 +431,28 @@ img {
   height: auto;
   margin-block: 1.5rem;
 }
+
+.single-project {
+  max-width: 47.5rem;
+  margin-inline: auto;
+}
+
+.back-arrow {
+  font-size: 1.5em;
+  vertical-align: -0.08em;
+}
+
+.project-back-link {
+  display: none;
+}
+
+.single-project .project-featured-image {
+  margin-inline: auto;
+}
+
+.project-featured-image--portfolio {
+  max-width: 16.25rem;
+}
 .project-details-link {
   display: inline-block;
   margin-top: 1.25rem;
@@ -436,6 +469,7 @@ img {
 
 .project-links {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 12px;
   margin-block: 24px;
@@ -454,6 +488,7 @@ img {
   height: 100%;
   object-fit: contain;
 }
+
 
 .project-heading {
   display: flex;
@@ -491,6 +526,7 @@ img {
 }
 .project-content {
   max-width: 47.5rem;
+  margin-inline: auto;
   overflow-wrap: anywhere;
 }
 
@@ -523,6 +559,16 @@ img {
 
 /* Responsive styles */
 @media (min-width: 641px) {
+  .project-back-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    min-width: 44px;
+    min-height: 44px;
+    text-decoration: none;
+  }
+
   .page-width {
     width: min(72.5rem, calc(100% - 5rem));
   }
