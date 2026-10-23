@@ -1,8 +1,9 @@
-import { Link } from 'react-router'
-
+import { Link } from "react-router";
+import SEO from "../components/SEO";
 export default function NotFound() {
   return (
     <section className="not-found" aria-labelledby="not-found-title">
+      <SEO title="Page not found" description="This page could not be found." />
       <p className="not-found-code">404</p>
       <h1 id="not-found-title">Page not found</h1>
       <p>This page doesn’t exist or may have moved.</p>
@@ -16,5 +17,5 @@ export default function NotFound() {
         </Link>
       </div>
     </section>
-  )
+  );
 }

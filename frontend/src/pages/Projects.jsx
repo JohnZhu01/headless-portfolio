@@ -3,10 +3,15 @@ import plainText from "../utils/plainText";
 import projectOverview from "../utils/projectOverview";
 import LoadingState from "../components/LoadingState";
 import { Link } from "react-router";
+import SEO from "../components/SEO";
 export default function Projects() {
   const { data: projects, loading, error } = useWordPress("project?_embed=1");
   return (
     <section className="content-page" aria-labelledby="projects-title">
+      <SEO
+        title="Projects"
+        description="Explore Johnny Zhu’s web development projects"
+      />
       <div className="section-heading">
         <h1 id="projects-title">Projects</h1>
       </div>

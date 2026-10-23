@@ -15,12 +15,6 @@ const pageOrder = [
   '/experience',
   '/skills-and-education',
 ]
-const pageTitles = {
-  "/": "Johnny Zhu | Portfolio",
-  "/projects": "Projects | Johnny Zhu",
-  "/experience": "Experience | Johnny Zhu",
-  "/skills-and-education": "Skills & Education | Johnny Zhu",
-};
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigationRef = useRef(null)
@@ -68,21 +62,7 @@ export default function App() {
     }
   }, [menuOpen])
   const location = useLocation()
-  useEffect(() => {
-    document.title =
-      pageTitles[location.pathname] ||
-      (location.pathname.startsWith("/projects/")
-        ? "Project | Johnny Zhu"
-        : "Page not found | Johnny Zhu");
-  }, [location.pathname]);
-  const previousPath = useRef(location.pathname)
 
-  useEffect(() => {
-    if (previousPath.current === location.pathname) return
-
-    previousPath.current = location.pathname
-    document.getElementById('main')?.focus({ preventScroll: true })
-  }, [location.pathname])
 
   const currentIndex = pageOrder.indexOf(location.pathname)
   const animatePage = currentIndex >= 0
