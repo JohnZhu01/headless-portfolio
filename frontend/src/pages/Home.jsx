@@ -1,25 +1,27 @@
-import '../styles/Home.css'
-import TechStack from '../components/TechStack'
-import LoadingState from '../components/LoadingState'
-import useWordPress from '../hooks/useWordPress'
-import plainText from '../utils/plainText'
-import githubIcon from 'devicon/icons/github/github-original.svg'
-import linkedinIcon from 'devicon/icons/linkedin/linkedin-original.svg'
-import emailIcon from '../assets/email.svg'
-import SEO from '../components/SEO'
-
+import "../styles/Home.css";
+import TechStack from "../components/TechStack";
+import LoadingState from "../components/LoadingState";
+import useWordPress from "../hooks/useWordPress";
+import plainText from "../utils/plainText";
+import githubIcon from "devicon/icons/github/github-original.svg";
+import linkedinIcon from "devicon/icons/linkedin/linkedin-original.svg";
+import emailIcon from "../assets/email.svg";
+import SEO from "../components/SEO";
 
 const contact = {
   email: "jz95zhu@gmail.com",
   github: "https://github.com/JohnZhu01",
-  linkedin:
-    "https://www.linkedin.com/in/johnny-zhu-7b6a54218/",
+  linkedin: "https://www.linkedin.com/in/johnny-zhu-7b6a54218/",
 };
 
 export default function Home() {
-  const { data: pages, loading, error } = useWordPress('pages?slug=about&_embed=1')
-  const home = pages[0]
-  const photo = home?._embedded?.['wp:featuredmedia']?.[0]
+  const {
+    data: pages,
+    loading,
+    error,
+  } = useWordPress("pages?slug=about&_embed=1");
+  const home = pages[0];
+  const photo = home?._embedded?.["wp:featuredmedia"]?.[0];
   return (
     <article className="hero" aria-labelledby="home-title">
       <SEO
@@ -46,10 +48,7 @@ export default function Home() {
           <h2>Contact</h2>
           <ul className="contact-links">
             <li>
-              <a
-                href={`mailto:${contact.email}`}
-                aria-label="Email Johnny Zhu"
-              >
+              <a href={`mailto:${contact.email}`} aria-label="Email Johnny Zhu">
                 <img src={emailIcon} alt="" />
               </a>
             </li>

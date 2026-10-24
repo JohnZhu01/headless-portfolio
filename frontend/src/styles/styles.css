@@ -1,7 +1,7 @@
 /* Global font and colors */
 
 :root {
-  font-family: 'DM Sans', Arial, Helvetica, sans-serif;
+  font-family: "DM Sans", Arial, Helvetica, sans-serif;
   color: #181818;
   background: #ffffff;
 }
@@ -18,7 +18,7 @@ h2,
 h3,
 h4,
 .wordmark {
-  font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+  font-family: "Space Grotesk", Arial, Helvetica, sans-serif;
   text-wrap: balance;
 }
 
@@ -47,7 +47,7 @@ input {
 a:focus-visible,
 button:focus-visible,
 summary:focus-visible {
-  outline: 3px solid #2F7CAD;
+  outline: 3px solid #2f7cad;
   outline-offset: 6px;
 }
 
@@ -55,5 +55,5 @@ summary:focus-visible {
 
 ::selection {
   background: #181818;
-  color: #F5F1E8;
+  color: #f5f1e8;
 }

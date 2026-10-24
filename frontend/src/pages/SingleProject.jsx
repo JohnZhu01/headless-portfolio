@@ -1,4 +1,4 @@
-import '../styles/SingleProject.css'
+import "../styles/SingleProject.css";
 import { Link, useParams } from "react-router";
 import useWordPress from "../hooks/useWordPress.js";
 import plainText from "../utils/plainText.js";
@@ -25,10 +25,10 @@ export default function SingleProject() {
     seoTitle = plainText(project.title?.rendered) || "Project";
   }
 
-const seoDescription = project
-  ? projectOverview(project.content?.rendered) ||
-    `Explore ${seoTitle}, a web development project by Johnny Zhu.`
-  : 'Explore Johnny Zhu’s web development projects.'
+  const seoDescription = project
+    ? projectOverview(project.content?.rendered) ||
+      `Explore ${seoTitle}, a web development project by Johnny Zhu.`
+    : "Explore Johnny Zhu’s web development projects.";
   const image = project?._embedded?.["wp:featuredmedia"]?.[0];
   const liveUrl = project?.acf?.live_project_url;
   const repoUrl = project?.acf?.repository_url;
@@ -36,7 +36,12 @@ const seoDescription = project
   return (
     <article className="content-page single-project">
       <SEO title={seoTitle} description={seoDescription} />
-      <Link className="project-back-link" to="/projects"><span className="back-arrow" aria-hidden="true">←</span> Back to projects</Link>
+      <Link className="project-back-link" to="/projects">
+        <span className="back-arrow" aria-hidden="true">
+          ←
+        </span>{" "}
+        Back to projects
+      </Link>
 
       {loading && <LoadingState label="Loading project…" />}
 
@@ -56,7 +61,7 @@ const seoDescription = project
 
           {image?.source_url && (
             <img
-              className={`project-featured-image${project.slug === 'personal-portfolio-website' ? ' project-featured-image--portfolio' : ''}`}
+              className={`project-featured-image${project.slug === "personal-portfolio-website" ? " project-featured-image--portfolio" : ""}`}
               src={image.source_url}
               alt={image.alt_text || ""}
               width={image.media_details?.width}

@@ -1,8 +1,9 @@
-import { Link, NavLink } from 'react-router'
-import useMobileMenu from '../hooks/useMobileMenu'
+import { Link, NavLink } from "react-router";
+import useMobileMenu from "../hooks/useMobileMenu";
 
 export default function Header() {
-  const { menuOpen, navigationRef, menuButtonRef, closeMenu, toggleMenu } = useMobileMenu()
+  const { menuOpen, navigationRef, menuButtonRef, closeMenu, toggleMenu } =
+    useMobileMenu();
 
   return (
     <>
@@ -16,18 +17,36 @@ export default function Header() {
           className={`main-navigation ${menuOpen ? "is-open" : ""}`}
           aria-label="Main navigation"
         >
-          <NavLink to="/" end onClick={() => { if (menuOpen) closeMenu() }}>
+          <NavLink
+            to="/"
+            end
+            onClick={() => {
+              if (menuOpen) closeMenu();
+            }}
+          >
             Home
           </NavLink>
-          <NavLink to="/projects" onClick={() => { if (menuOpen) closeMenu() }}>
+          <NavLink
+            to="/projects"
+            onClick={() => {
+              if (menuOpen) closeMenu();
+            }}
+          >
             Projects
           </NavLink>
-          <NavLink to="/experience" onClick={() => { if (menuOpen) closeMenu() }}>
+          <NavLink
+            to="/experience"
+            onClick={() => {
+              if (menuOpen) closeMenu();
+            }}
+          >
             Experience
           </NavLink>
           <NavLink
             to="/skills-and-education"
-            onClick={() => { if (menuOpen) closeMenu() }}
+            onClick={() => {
+              if (menuOpen) closeMenu();
+            }}
           >
             Skills &amp; Education
           </NavLink>
@@ -54,5 +73,5 @@ export default function Header() {
         <span aria-hidden="true">{menuOpen ? "×" : "☰"}</span>
       </button>
     </>
-  )
+  );
 }

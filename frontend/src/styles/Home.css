@@ -30,7 +30,7 @@
 }
 
 .hero h1 span {
-  color: #C65D32;
+  color: #c65d32;
 }
 
 .hero .eyebrow {
@@ -59,16 +59,16 @@
 }
 
 .profile-placeholder {
-  background: #F3F4F6;
+  background: #f3f4f6;
   color: #595650;
-  font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+  font-family: "Space Grotesk", Arial, Helvetica, sans-serif;
   font-size: 2.5rem;
   display: grid;
   place-items: center;
 }
 
 .profile-role {
-  font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+  font-family: "Space Grotesk", Arial, Helvetica, sans-serif;
   font-size: clamp(1.25rem, 1rem + 0.75vw, 1.625rem);
   font-weight: 700;
   line-height: 1.2;
@@ -81,8 +81,8 @@
 }
 
 .profile-role::before {
-  content: '';
-  background: #2F7CAD;
+  content: "";
+  background: #2f7cad;
   border-radius: 999px;
   display: block;
   width: 2rem;
@@ -106,7 +106,7 @@
 }
 
 .contact-links a {
-  border: 1px solid #D8D1C4;
+  border: 1px solid #d8d1c4;
   border-radius: 50%;
   background: #fff;
   display: grid;
@@ -116,7 +116,7 @@
 }
 
 .contact-links a:hover {
-  border-color: #2F7CAD;
+  border-color: #2f7cad;
 }
 
 .contact-links img {
@@ -156,7 +156,7 @@
   letter-spacing: -0.025em;
   color: #181818;
   text-decoration-line: underline;
-  text-decoration-color: #C65D32;
+  text-decoration-color: #c65d32;
   text-decoration-thickness: 3px;
   text-underline-offset: 0.4em;
   text-decoration-skip-ink: auto;
@@ -166,7 +166,7 @@
 /* Tech stack */
 
 .tech-stack-section {
-  border-top: 1px solid #D8D1C4;
+  border-top: 1px solid #d8d1c4;
   margin-top: 3rem;
   padding-block: 2rem 0;
 }
@@ -191,8 +191,8 @@
 
 .tech-tool {
   background: #fff;
-  border: 1px solid #D8D1C4;
-  border-top: 2px solid #2F7CAD;
+  border: 1px solid #d8d1c4;
+  border-top: 2px solid #2f7cad;
   border-radius: 6px;
   box-shadow: 0 3px 8px rgb(0 0 0 / 9%);
   display: flex;

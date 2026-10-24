@@ -1,4 +1,4 @@
-import '../styles/Projects.css'
+import "../styles/Projects.css";
 import useWordPress from "../hooks/useWordPress";
 import plainText from "../utils/plainText";
 import projectOverview from "../utils/projectOverview";

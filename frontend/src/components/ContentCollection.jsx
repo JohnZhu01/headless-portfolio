@@ -1,16 +1,29 @@
-import '../styles/ContentCollection.css'
-import useWordPress from '../hooks/useWordPress'
-import plainText from '../utils/plainText'
-import LoadingState from './LoadingState'
-import SEO from './SEO'
-export default function ContentCollection({ title,description, endpoint, headingId, variant, priorityIds = [] }) {
-  const { data: entries, loading, error } = useWordPress(endpoint + '?_embed=1')
+import "../styles/ContentCollection.css";
+import useWordPress from "../hooks/useWordPress";
+import plainText from "../utils/plainText";
+import LoadingState from "./LoadingState";
+import SEO from "./SEO";
+export default function ContentCollection({
+  title,
+  description,
+  endpoint,
+  headingId,
+  variant,
+  priorityIds = [],
+}) {
+  const {
+    data: entries,
+    loading,
+    error,
+  } = useWordPress(endpoint + "?_embed=1");
   const orderedEntries = [...entries].sort((a, b) => {
-    const aIndex = priorityIds.indexOf(a.id)
-    const bIndex = priorityIds.indexOf(b.id)
-    return (aIndex < 0 ? priorityIds.length : aIndex) -
+    const aIndex = priorityIds.indexOf(a.id);
+    const bIndex = priorityIds.indexOf(b.id);
+    return (
+      (aIndex < 0 ? priorityIds.length : aIndex) -
       (bIndex < 0 ? priorityIds.length : bIndex)
-  })
+    );
+  });
   return (
     <section className="content-page" aria-labelledby={headingId}>
       <SEO title={title} description={description} />

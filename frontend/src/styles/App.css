@@ -71,7 +71,7 @@ main.page-width {
 .section-heading h2 {
   font-size: clamp(32px, 4vw, 46px);
   font-weight: 500;
-  letter-spacing: -.045em;
+  letter-spacing: -0.045em;
 }
 
 .section-heading h2 {
@@ -126,7 +126,7 @@ main.page-width {
 
 .wordmark span,
 .accent {
-  color: #C65D32;
+  color: #c65d32;
 }
 
 .site-header .wordmark span {
@@ -149,12 +149,12 @@ main.page-width {
 
 .site-header nav a:hover {
   text-decoration: underline;
-  text-decoration-color: #2F7CAD;
+  text-decoration-color: #2f7cad;
 }
 
 .site-header nav a[aria-current="page"] {
   text-decoration: underline;
-  text-decoration-color: #C65D32;
+  text-decoration-color: #c65d32;
   text-underline-offset: 6px;
 }
 
@@ -196,9 +196,9 @@ main.page-width {
 }
 
 .menu-toggle {
-  border: 1px solid #2F7CAD;
+  border: 1px solid #2f7cad;
   border-radius: 50%;
-  background: #2F7CAD;
+  background: #2f7cad;
   color: #fff;
   font-size: 26px;
   display: grid;
@@ -227,7 +227,7 @@ main.page-width {
 }
 
 .button:hover {
-  background: #C65D32;
+  background: #c65d32;
 }
 
 .button span {
@@ -246,7 +246,7 @@ main.page-width {
 }
 
 .project-details-link:hover {
-  background: #2F7CAD;
+  background: #2f7cad;
 }
 
 /* Loading state */
@@ -265,7 +265,7 @@ main.page-width {
 @media (max-width: 640px) {
   .section-heading .eyebrow {
     font-size: 10px;
-    letter-spacing: .5px;
+    letter-spacing: 0.5px;
   }
 }
 
